@@ -35,6 +35,12 @@ public class MainMatrix {
             out("Concurrent thread time, sec: %.3f", duration);
             concurrentThreadSum += duration;
 
+            start = System.currentTimeMillis();
+            final int[][] concurrentMatrixC2 = MatrixUtil.concurrentMultiply2(matrixA, matrixB, executor);
+            duration = (System.currentTimeMillis() - start) / 1000.;
+            out("Concurrent2 thread time, sec: %.3f", duration);
+            concurrentThreadSum += duration;
+
             if (!MatrixUtil.compare(matrixC, concurrentMatrixC)) {
                 System.err.println("Comparison failed");
                 break;
